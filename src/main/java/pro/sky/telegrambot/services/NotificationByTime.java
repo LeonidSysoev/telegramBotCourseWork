@@ -21,7 +21,7 @@ public class NotificationByTime {
 
     @Scheduled(cron = "0 0/1 * * * *")
     public void run() {
-        repository.findAllByLocaleDateTime(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES))
+        repository.findAllByLocalDateTime(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES))
                 .forEach(task -> {
                     telegramBot.execute(new SendMessage(task.getChatId(), task.getNotification()));
                 });

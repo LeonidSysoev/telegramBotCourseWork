@@ -49,13 +49,14 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
             if (update.message() != null && update.message().text() != null) {
                 if (update.message().text().equals("/start")) {
                     SendResponse response = telegramBot.execute(message);
-                    logger.debug("Processing: {}",response);
                 } else {
                     if (matcher.matches()) {
                         LocalDateTime localDateTime = localDateTimeParse(matcher.group(1));
                         String text = matcher.group(3);
                         repository.save(new NotificationTask(update.message().chat().id(), text, localDateTime));
+                        telegramBot.execute(new SendMessage(update.message().chat().id(), "Задача принята"));
                     }
+                    telegramBot.execute(new SendMessage(update.message().chat().id(), "Задача принята"));
                 }
             }
         });

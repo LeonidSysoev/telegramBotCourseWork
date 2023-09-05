@@ -20,9 +20,7 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="f29bb3b3-842c-4614-bbe8-c988cbdc3658" object-ref="schemas/public/tables/notification_task" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="f29bb3b3-842c-4614-bbe8-c988cbdc3658" />
