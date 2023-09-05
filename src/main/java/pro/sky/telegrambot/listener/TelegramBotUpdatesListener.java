@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import pro.sky.telegrambot.model.NotificationTask;
 import pro.sky.telegrambot.repositories.NotificationTaskRepository;
@@ -25,13 +26,11 @@ import java.util.regex.Pattern;
 @Service
 public class TelegramBotUpdatesListener implements UpdatesListener {
     private Logger logger = LoggerFactory.getLogger(TelegramBotUpdatesListener.class);
-    private final TelegramBot telegramBot;
-    private final NotificationTaskRepository repository;
+    @Autowired
+    private TelegramBot telegramBot;
+    @Autowired
+    private NotificationTaskRepository repository;
 
-    public TelegramBotUpdatesListener(TelegramBot telegramBot, NotificationTaskRepository repository) {
-        this.telegramBot = telegramBot;
-        this.repository = repository;
-    }
 
     @PostConstruct
     public void init() {
@@ -65,7 +64,7 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
 
     private LocalDateTime localDateTimeParse(String text) {
         try {
-           return LocalDateTime.parse(text,
+            return LocalDateTime.parse(text,
                     DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"));
         } catch (Exception e) {
             logger.error("Cannot parse: {}", e);

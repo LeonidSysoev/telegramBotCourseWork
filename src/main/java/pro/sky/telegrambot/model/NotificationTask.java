@@ -5,18 +5,17 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = "notification_task")
 public class NotificationTask {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private long id;
     private long chatId;
-    private String notificationTask;
+    private String notification;
     private LocalDateTime localDateTime;
 
-    public NotificationTask(long chatId, String notificationTask, LocalDateTime localDateTime) {
+    public NotificationTask(long chatId, String notification, LocalDateTime localDateTime) {
         this.chatId = chatId;
-        this.notificationTask = notificationTask;
+        this.notification = notification;
         this.localDateTime = localDateTime;
     }
 
@@ -39,12 +38,12 @@ public class NotificationTask {
         this.chatId = chatId;
     }
 
-    public String getNotificationTask() {
-        return notificationTask;
+    public String getNotification() {
+        return notification;
     }
 
-    public void setNotificationTask(String notificationTask) {
-        this.notificationTask = notificationTask;
+    public void setNotification(String notification) {
+        this.notification = notification;
     }
 
     public LocalDateTime getLocalDateTime() {
@@ -60,20 +59,20 @@ public class NotificationTask {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NotificationTask that = (NotificationTask) o;
-        return id == that.id && chatId == that.chatId && Objects.equals(notificationTask, that.notificationTask) && Objects.equals(localDateTime, that.localDateTime);
+        return id == that.id && chatId == that.chatId && Objects.equals(notification, that.notification) && Objects.equals(localDateTime, that.localDateTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, chatId, notificationTask, localDateTime);
+        return Objects.hash(id, chatId, notification, localDateTime);
     }
 
     @Override
     public String toString() {
-        return "notificationTask{" +
+        return "notification{" +
                 "id=" + id +
                 ", chatId=" + chatId +
-                ", notificationTask='" + notificationTask + '\'' +
+                ", notification='" + notification + '\'' +
                 ", localDateTime=" + localDateTime +
                 '}';
     }

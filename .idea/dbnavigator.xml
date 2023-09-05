@@ -20,16 +20,22 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="f29bb3b3-842c-4614-bbe8-c988cbdc3658" object-ref="schemas/public/tables/notification_task" />
+    </open-files>
+  </component>
+  <component name="DBNavigator.Project.DatabaseSessionManager">
+    <connection id="f29bb3b3-842c-4614-bbe8-c988cbdc3658" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="f29bb3b3-842c-4614-bbe8-c988cbdc3658" dataset="public.notification_task" active-filter-id="" />
+    <filter-actions connection-id="f29bb3b3-842c-4614-bbe8-c988cbdc3658" dataset="public.notification_task" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
     <mapping file-url="file://$PROJECT_DIR$/src/main/resources/liquibase/scripts/telegram-bot.sql" connection-id="f29bb3b3-842c-4614-bbe8-c988cbdc3658" session-id="MAIN" current-schema="public" />
+    <mapping file-url="file://$PROJECT_DIR$/target/classes/liquibase/scripts/telegram-bot.sql" connection-id="f29bb3b3-842c-4614-bbe8-c988cbdc3658" session-id="MAIN" current-schema="telegramBot" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />

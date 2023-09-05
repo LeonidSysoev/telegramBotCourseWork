@@ -12,7 +12,7 @@ import java.time.temporal.ChronoUnit;
 @Service
 public class NotificationByTime {
     private TelegramBot telegramBot;
-    NotificationTaskRepository repository;
+    private NotificationTaskRepository repository;
 
     public NotificationByTime(TelegramBot telegramBot, NotificationTaskRepository repository) {
         this.telegramBot = telegramBot;
@@ -21,9 +21,9 @@ public class NotificationByTime {
 
     @Scheduled(cron = "0 0/1 * * * *")
     public void run() {
-        repository.findAllByDateTime(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES))
+        repository.findAllByLocaleDateTime(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES))
                 .forEach(task -> {
-                    telegramBot.execute(new SendMessage(task.getChatId(), task.getNotificationTask()));
+                    telegramBot.execute(new SendMessage(task.getChatId(), task.getNotification()));
                 });
     }
 
