@@ -44,19 +44,19 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
             logger.debug("Processing update: {}", update);
             long chatId = update.message().chat().id();
             SendMessage message = new SendMessage(chatId, "Добро пожаловать!");
-            Pattern pattern = Pattern.compile("[([0-9\\.\\:\\s]{16})(\\s)([\\W+]+)]");
+            Pattern pattern = Pattern.compile("([0-9\\.\\:\\s]{16})(\\s)([\\W+]+)");
             Matcher matcher = pattern.matcher(update.message().text());
             if (update.message() != null && update.message().text() != null) {
                 if (update.message().text().equals("/start")) {
                     SendResponse response = telegramBot.execute(message);
-                } else {
+                }
+                else {
                     if (matcher.matches()) {
                         LocalDateTime localDateTime = localDateTimeParse(matcher.group(1));
                         String text = matcher.group(3);
                         repository.save(new NotificationTask(update.message().chat().id(), text, localDateTime));
                         telegramBot.execute(new SendMessage(update.message().chat().id(), "Задача принята"));
                     }
-                    telegramBot.execute(new SendMessage(update.message().chat().id(), "Задача принята"));
                 }
             }
         });
